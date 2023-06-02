@@ -1,0 +1,95 @@
+{% extends 'layouts/header.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block username %}
+Login Page
+{% endblock %}
+
+{% block main %}
+<div class="row tm-row tm-mb-120">
+    <div class="col-12">
+        <h2 class="tm-color-primary tm-post-title tm-mb-60">Login</h2>
+    </div>
+    <div class="col-lg-7 tm-contact-left">
+        <form action="" method="POST" class="mb-5 tm-comment-form">
+            {% csrf_token %}
+            <div class="form-group row mb-4">
+                <label class="col-sm-3 col-form-label text-right tm-color-primary">Username</label>
+                <div class="col-sm-9">
+                    <input class="form-control mr-0 ml-auto" name="username" type="text" required>
+                </div>
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col-sm-3 col-form-label text-right tm-color-primary">Password</label>
+                <div class="col-sm-9">
+                    <input class="form-control mr-0 ml-auto" name="password" type="password" required>
+                </div>
+            </div>
+            <div class="text-right">
+                <input class="tm-btn tm-btn-primary tm-btn-small" type="submit" value="Login">
+            </div>
+            {% for message in messages %}
+                <p class="mt-3 mb-3 tm-line-height-short">
+                    {{message}}
+                </p>
+            {% endfor %}
+        </form>
+    </div>
+    <div class="col-lg-5 tm-contact-right">
+        <address class="mb-4 tm-color-gray">
+            120 Lorem ipsum dolor sit amet,
+            consectetur adipiscing 10550
+        </address>
+        <span class="d-block">
+                        Tel:
+                        <a href="tel:060-070-0980" class="tm-color-gray">060-070-0980</a>
+                    </span>
+        <span class="mb-4 d-block">
+                        Email:
+                        <a href="mailto:info@company.com" class="tm-color-gray">info@company.com</a>
+                    </span>
+        <p class="mb-5 tm-line-height-short">
+            Maecenas eu mi eu dui cursus
+            consequat non eu metus. Morbi ac
+            turpis eleifend, commodo purus
+            eget, commodo mauris.
+        </p>
+        <ul class="tm-social-links">
+            <li class="mb-2">
+                <a href="#" class="d-flex align-items-center justify-content-center">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#" class="d-flex align-items-center justify-content-center">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#" class="d-flex align-items-center justify-content-center">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </li>
+            <li class="mb-2">
+                <a href="#" class="d-flex align-items-center justify-content-center mr-0">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer class="row tm-row">
+    <div class="col-md-6 col-12 tm-color-gray">
+        Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+    </div>
+    <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+        Copyright 2020 Xtra Blog Company Co. Ltd.
+    </div>
+</footer>
+{% endblock %}

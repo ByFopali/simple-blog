@@ -1,0 +1,38 @@
+{% extends 'layouts/header.html' %}
+{% load static %}
+
+{% block title %}
+Deleting article {{article}}
+{% endblock %}
+
+{% block username %}
+Deleting article
+{% endblock %}
+
+{% block main %}
+<!-- Search form -->
+<div class="row tm-row">
+    <div class="col-12">
+        <p>Are you sure you want to delete article "{{article}}?"</p>
+        <div class="d-flex justify-content-start tm-pt-45">
+            <form action="{% url 'delete' article.id %}" method="POST">
+                {% csrf_token %}
+                <a href="{% url 'index' %}" class="btn btn-primary">Cancel</a>
+                <input type="submit" class="ml-2 btn btn-danger" value="Delete">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer class="row tm-row">
+    <div class="col-md-6 col-12 tm-color-gray">
+        Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+    </div>
+    <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+        Copyright 2020 Xtra Blog Company Co. Ltd.
+    </div>
+</footer>
+{% endblock %}

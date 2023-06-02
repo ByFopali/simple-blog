@@ -1,0 +1,86 @@
+{% extends 'layouts/header.html' %}
+
+{% block title %}
+    Xtra Blog
+{% endblock %}
+
+{% block username %}
+    Вітаю, {{request.user}}
+{% endblock %}
+
+{% block main %}
+    <!-- Search form -->
+    <div class="row tm-row">
+        <div class="col-12">
+            <form method="GET" class="form-inline tm-mb-80 tm-search-form">
+                <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..."
+                       aria-label="Search">
+                <button class="tm-search-button" type="submit">
+                    <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="row tm-row">
+        {% if particles %}
+        {% for article in particles %}
+        <article class="col-12 col-md-6 tm-post">
+            <hr class="tm-hr-primary">
+            <a href="#" class="effect-lily tm-post-link tm-pt-60">
+                <h2 class="tm-pt-30 tm-color-primary tm-post-title">{{article.title}}</h2>
+            </a>
+            <p class="tm-pt-30">
+                {{article.description}}
+            </p>
+            <div class="d-flex justify-content-between tm-pt-45">
+                <span class="tm-color-primary">{{article.created_at}}</span>
+            </div>
+            <div class="d-flex justify-content-end tm-pt-45">
+                <a href="{% url 'update' article.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete' article.id %}" class="ml-2 btn btn-danger">Delete</a>
+            </div>
+        </article>
+        {% endfor %}
+        {% else %}
+        <p class="mb-5 tm-line-height-short">
+            You don't any articles now
+        </p>
+        {% endif %}
+    </div>
+    <div class="row tm-row tm-mt-100 tm-mb-75">
+    <div class="tm-prev-next-wrapper">
+        {% if particles.has_previous %}
+        <a href="?page={{ particles.previous_page_number }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next tm-mr-20">Prev</a>
+        {% else %}
+        <a href="#" class="mb-2 tm-btn tm-btn-primary tm-prev-next disabled tm-mr-20">Prev</a>
+        {% endif %}
+        {% if particles.has_next %}
+        <a href="?page={{ particles.next_page_number }}" class="mb-2 tm-btn tm-btn-primary tm-prev-next">Next</a>
+        {% else %}
+        <a href="#" class="mb-2 tm-btn tm-btn-primary disabled tm-prev-next">Next</a>
+        {% endif %}
+    </div>
+    <div class="tm-paging-wrapper">
+<!--        <span class="d-inline-block mr-3">Page</span>-->
+        <nav class="tm-paging-nav d-inline-block">
+            <ul>
+
+                 Page {{ particles.number }} of {{ particles.paginator.num_pages }}
+
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="row tm-row">
+        <hr class="col-12">
+        <div class="col-md-6 col-12 tm-color-gray">
+            Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-external-link">TemplateMo</a>
+        </div>
+        <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+            Copyright 2020 Xtra Blog Company Co. Ltd.
+        </div>
+    </footer>
+{% endblock %}
