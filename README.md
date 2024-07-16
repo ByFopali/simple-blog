@@ -1,0 +1,1 @@
+Djungo blog using jinja
